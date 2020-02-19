@@ -1,0 +1,15 @@
+---
+- include: certbot.yml
+  tags:
+    - certbot
+
+- include: cronjob.yml
+  tags:
+    - cronjob
+  when: cronjob
+
+- include: dhparams.yml
+  tags:
+    - dhparams
+  when: dhparams
+

@@ -1,0 +1,27 @@
+---
+- name: Certbot | Cron | Set env SHELL
+  cron:
+    name: 'SHELL'
+    env: yes
+    user: "root"
+    value: '/bin/sh'
+    cron_file: certbot
+
+- name: Certbot | Cron | Set env PATH
+  cron:
+    name: 'PATH'
+    env: yes
+    user: "root"
+    value: '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
+    cron_file: certbot
+
+- name: Certbot | Cron | Create/update the new Cron job
+  cron:
+    name: "certbot"
+    # Here should be something like that: certbot -q renew --renew-hook "service nginx reload" - but unfortunately it doesn't work fine
+    job: 'certbot -q renew; service nginx reload'
+    user: "root"
+    minute: "{{ cronjob_minute }}"
+    hour: "{{ cronjob_hour }}"
+    weekday: "{{ cronjob_weekday }}"
+    cron_file: "certbot"

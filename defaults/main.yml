@@ -1,0 +1,7 @@
+---
+dhparams: true
+dhparams_bits: 2048
+cronjob: true
+cronjob_hour: 2
+cronjob_minute: 30
+cronjob_weekday: '*'

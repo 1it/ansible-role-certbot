@@ -1,0 +1,6 @@
+---
+- name: Certs | Generate a new Diffie-Hellman 2048-bit group
+  command:
+    "openssl dhparam -out /etc/ssl/dhparams.pem {{ dhparams_bits }}"
+  args:
+    creates: /etc/ssl/dhparams.pem

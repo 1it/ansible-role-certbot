@@ -1,0 +1,7 @@
+---
+- name: Certbot | Install the Certbot package
+  apt:
+    name: certbot
+    state: latest
+    update_cache: yes
+
